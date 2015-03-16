@@ -1,0 +1,3 @@
+The pdf is a bit crappy, I'll try and clean it up.
+
+Here is the url for the preso http://spencer.gibb.us/preso/cloud-native-devnexus/

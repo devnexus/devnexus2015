@@ -1,0 +1,427 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="author" content="Kito Mann, Virtua, Inc."><title>What&#8217;s Next for JavaScript? Overview of ECMAScript 6.0</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js/css/reveal.min.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme"><style>.listingblock .pygments .hll { background-color: #ffffcc }
+.listingblock .pygments  { background: #f8f8f8; }
+.listingblock .pygments .tok-c { color: #408080; font-style: italic } /* Comment */
+.listingblock .pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+.listingblock .pygments .tok-k { color: #008000; font-weight: bold } /* Keyword */
+.listingblock .pygments .tok-o { color: #666666 } /* Operator */
+.listingblock .pygments .tok-cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.listingblock .pygments .tok-cp { color: #BC7A00 } /* Comment.Preproc */
+.listingblock .pygments .tok-c1 { color: #408080; font-style: italic } /* Comment.Single */
+.listingblock .pygments .tok-cs { color: #408080; font-style: italic } /* Comment.Special */
+.listingblock .pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+.listingblock .pygments .tok-ge { font-style: italic } /* Generic.Emph */
+.listingblock .pygments .tok-gr { color: #FF0000 } /* Generic.Error */
+.listingblock .pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.listingblock .pygments .tok-gi { color: #00A000 } /* Generic.Inserted */
+.listingblock .pygments .tok-go { color: #888888 } /* Generic.Output */
+.listingblock .pygments .tok-gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.listingblock .pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+.listingblock .pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.listingblock .pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+.listingblock .pygments .tok-kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.listingblock .pygments .tok-kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.listingblock .pygments .tok-kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.listingblock .pygments .tok-kp { color: #008000 } /* Keyword.Pseudo */
+.listingblock .pygments .tok-kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.listingblock .pygments .tok-kt { color: #B00040 } /* Keyword.Type */
+.listingblock .pygments .tok-m { color: #666666 } /* Literal.Number */
+.listingblock .pygments .tok-s { color: #BA2121 } /* Literal.String */
+.listingblock .pygments .tok-na { color: #7D9029 } /* Name.Attribute */
+.listingblock .pygments .tok-nb { color: #008000 } /* Name.Builtin */
+.listingblock .pygments .tok-nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.listingblock .pygments .tok-no { color: #880000 } /* Name.Constant */
+.listingblock .pygments .tok-nd { color: #AA22FF } /* Name.Decorator */
+.listingblock .pygments .tok-ni { color: #999999; font-weight: bold } /* Name.Entity */
+.listingblock .pygments .tok-ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.listingblock .pygments .tok-nf { color: #0000FF } /* Name.Function */
+.listingblock .pygments .tok-nl { color: #A0A000 } /* Name.Label */
+.listingblock .pygments .tok-nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.listingblock .pygments .tok-nt { color: #008000; font-weight: bold } /* Name.Tag */
+.listingblock .pygments .tok-nv { color: #19177C } /* Name.Variable */
+.listingblock .pygments .tok-ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.listingblock .pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+.listingblock .pygments .tok-mb { color: #666666 } /* Literal.Number.Bin */
+.listingblock .pygments .tok-mf { color: #666666 } /* Literal.Number.Float */
+.listingblock .pygments .tok-mh { color: #666666 } /* Literal.Number.Hex */
+.listingblock .pygments .tok-mi { color: #666666 } /* Literal.Number.Integer */
+.listingblock .pygments .tok-mo { color: #666666 } /* Literal.Number.Oct */
+.listingblock .pygments .tok-sb { color: #BA2121 } /* Literal.String.Backtick */
+.listingblock .pygments .tok-sc { color: #BA2121 } /* Literal.String.Char */
+.listingblock .pygments .tok-sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.listingblock .pygments .tok-s2 { color: #BA2121 } /* Literal.String.Double */
+.listingblock .pygments .tok-se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.listingblock .pygments .tok-sh { color: #BA2121 } /* Literal.String.Heredoc */
+.listingblock .pygments .tok-si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.listingblock .pygments .tok-sx { color: #008000 } /* Literal.String.Other */
+.listingblock .pygments .tok-sr { color: #BB6688 } /* Literal.String.Regex */
+.listingblock .pygments .tok-s1 { color: #BA2121 } /* Literal.String.Single */
+.listingblock .pygments .tok-ss { color: #19177C } /* Literal.String.Symbol */
+.listingblock .pygments .tok-bp { color: #008000 } /* Name.Builtin.Pseudo */
+.listingblock .pygments .tok-vc { color: #19177C } /* Name.Variable.Class */
+.listingblock .pygments .tok-vg { color: #19177C } /* Name.Variable.Global */
+.listingblock .pygments .tok-vi { color: #19177C } /* Name.Variable.Instance */
+.listingblock .pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */</style><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script type="text/javascript">document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section><h2>What&#8217;s Next for JavaScript? Overview of ECMAScript 6.0</h2><p><small>Kito Mann, Virtua, Inc.</small></p></section><section id="_kito_d_mann_kito99"><h2>Kito D. Mann (@kito99)</h2><div class="ulist"><ul><li class="fragment"><p>Principal Consultant at Virtua (<a href="http://www.virtua.com" class="bare">http://www.virtua.com</a>)</p></li><li class="fragment"><p>Training, consulting, architecture, mentoring</p></li><li class="fragment"><p>Official US PrimeFaces partner</p></li><li class="fragment"><p>Author, JavaServer Faces in Action</p></li><li class="fragment"><p>Founder, JSF Central (<a href="http://www.jsfcentral.com" class="bare">http://www.jsfcentral.com</a>)</p></li></ul></div></section>
+<section id="_kito_d_mann_kito99_2"><h2>Kito D. Mann (@kito99)</h2><div class="ulist"><ul><li class="fragment"><p>Co-host, Enterprise Java Newscast (<a href="http://enterprisejavanews.com" class="bare">http://enterprisejavanews.com</a>)</p></li><li class="fragment"><p>Internationally recognized speaker</p><div class="ulist"><ul><li><p>JavaOne, JavaZone, Devoxx, NFJS, TSSJS, etc.</p></li></ul></div></li><li class="fragment"><p>JCP Member</p><div class="ulist"><ul><li><p>JSF, CDI, JSF Portlet Bridge, Portlets</p></li></ul></div></li></ul></div></section>
+<section id="_ecmascript_6"><h2>ECMAScript 6</h2><div class="ulist"><ul><li class="fragment"><p>Major language update to JavaScript</p></li><li class="fragment"><p>Feature-frozen; expected to be finished in June, 2015*</p></li></ul></div></section>
+<section id="_key_changes_additions"><h2>Key Changes/Additions</h2><div class="ulist"><ul><li><p>Core</p></li><li><p>Functions</p></li><li><p>Objects</p></li><li><p>Iterators and Generators</p></li><li><p>Promises</p></li><li><p>Modules</p></li></ul></div></section>
+<section id="_core"><h2>Core</h2></section>
+<section id="_core_2"><h2>Core</h2><div class="ulist"><ul><li class="fragment"><p>One JavaScript</p></li><li class="fragment"><p>no language versioning</p></li><li class="fragment"><p>backwards compatible</p></li><li class="fragment"><p><strong>strict</strong> mode is enabled by default</p></li></ul></div></section>
+<section id="_let_declaration"><h2>Let Declaration</h2><div class="ulist"><ul><li><p>Declares a variable within the scope of the current block</p><div class="ulist"><ul><li><p>Slightly different than <strong>var</strong>, which declares a variable within the block of the enclosing function</p></li></ul></div></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">letDeclaration</span><span class="tok-p">(</span><span class="tok-nx">condition</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-kd">var</span> <span class="tok-nx">varValue</span><span class="tok-p">;</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">condition</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+
+        <span class="tok-c1">// varValue exists here</span>
+
+        <span class="tok-kd">let</span> <span class="tok-nx">letValue</span> <span class="tok-o">=</span> <span class="tok-mi">100</span><span class="tok-p">;</span>
+        <span class="tok-k">return</span> <span class="tok-nx">letValue</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-c1">// letValue doesn&#39;t exist here</span>
+
+    <span class="tok-k">return</span> <span class="tok-nx">varValue</span><span class="tok-p">;</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_let_declaration_2"><h2>Let Declaration</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">letFor</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kd">let</span> <span class="tok-nx">x</span> <span class="tok-o">=</span> <span class="tok-mi">0</span><span class="tok-p">;</span> <span class="tok-nx">x</span><span class="tok-o">++</span><span class="tok-p">;</span> <span class="tok-nx">x</span> <span class="tok-o">&lt;</span> <span class="tok-mi">10</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-c1">// x is only available here</span>
+        <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_let_declarations"><h2>Let Declarations</h2><div class="ulist"><ul><li><p>Cannot redefine variables in the same scope</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">var</span> <span class="tok-nx">foo</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">;</span>
+<span class="tok-kd">let</span> <span class="tok-nx">foo</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">;</span> <span class="tok-c1">// syntax error</span></code></pre></div></div></section>
+<section id="_let_declarations_2"><h2>Let Declarations</h2><div class="ulist"><ul><li><p>Cannot reference before it is defined in the current block</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">letReferenceError</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-k">typeof</span> <span class="tok-nx">letValue</span><span class="tok-p">);</span> <span class="tok-c1">// undefined</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">condition</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-k">typeof</span> <span class="tok-nx">letValue</span><span class="tok-p">);</span> <span class="tok-c1">// reference error</span>
+        <span class="tok-kd">let</span> <span class="tok-nx">letValue</span> <span class="tok-o">=</span> <span class="tok-mi">100</span><span class="tok-p">;</span>
+        <span class="tok-k">return</span> <span class="tok-nx">letValue</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_let_declarations_3"><h2>Let Declarations</h2><div class="ulist"><ul><li><p>If posible, always use <strong>let</strong> instead of <strong>var</strong></p></li></ul></div></section>
+<section id="_constants"><h2>Constants</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kr">const</span> <span class="tok-nx">FINALLY</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;finally!&quot;</span><span class="tok-p">;</span></code></pre></div></div>
+<div class="ulist"><ul><li><p>Scoped within the current block like <strong>let</strong></p></li></ul></div></section>
+<section id="_destructuring_assignment"><h2>Destructuring Assignment</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">var</span> <span class="tok-nx">options</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+        <span class="tok-nx">defaultClass</span><span class="tok-o">:</span> <span class="tok-s1">&#39;maximized&#39;</span><span class="tok-p">,</span>
+        <span class="tok-nx">save</span><span class="tok-o">:</span> <span class="tok-kc">false</span>
+    <span class="tok-p">};</span>
+
+<span class="tok-c1">// ...</span>
+
+<span class="tok-kd">var</span> <span class="tok-p">{</span> <span class="tok-nx">defaultClass</span><span class="tok-o">:</span> <span class="tok-nx">localClass</span><span class="tok-p">,</span> <span class="tok-nx">save</span><span class="tok-o">:</span> <span class="tok-nx">localSave</span> <span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-nx">options</span><span class="tok-p">;</span>
+
+<span class="tok-kd">var</span> <span class="tok-p">{</span> <span class="tok-nx">localClass</span><span class="tok-p">,</span> <span class="tok-nx">localSave</span> <span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-nx">options</span><span class="tok-p">;</span></code></pre></div></div>
+<div class="ulist"><ul><li><p>Suppports nested objects</p></li></ul></div></section>
+<section id="_array_destructuring"><h2>Array Destructuring</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">var</span> <span class="tok-nx">shapes</span> <span class="tok-o">=</span> <span class="tok-p">[</span> <span class="tok-s2">&quot;rectangle&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;circle&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;octagon&quot;</span> <span class="tok-p">];</span>
+
+<span class="tok-c1">// ...</span>
+
+<span class="tok-kd">var</span> <span class="tok-p">[</span> <span class="tok-nx">firstShape</span><span class="tok-p">,</span> <span class="tok-nx">secondShape</span> <span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nx">colors</span><span class="tok-p">;</span>
+
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">firstShape</span><span class="tok-p">);</span>        <span class="tok-c1">// &quot;rectangle&quot;</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">secondShape</span><span class="tok-p">);</span>       <span class="tok-c1">// &quot;circle”</span></code></pre></div></div></section>
+<section id="_string_templates"><h2>String Templates</h2><div class="ulist"><ul><li class="fragment"><p>Multiline strings</p></li><li class="fragment"><p>Basic string formatting</p></li><li class="fragment"><p>HTML escaping</p></li></ul></div></section>
+<section id="_string_templates_2"><h2>String Templates</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">let</span> <span class="tok-nx">multiline</span> <span class="tok-o">=</span> <span class="tok-err">`</span><span class="tok-nx">This</span> <span class="tok-nx">is</span> <span class="tok-nx">a</span> <span class="tok-nx">boring</span> <span class="tok-nx">template</span>
+<span class="tok-nx">multiline</span> <span class="tok-nx">string</span><span class="tok-p">.</span><span class="tok-err">`</span><span class="tok-p">;</span>
+
+<span class="tok-kd">let</span> <span class="tok-nx">x</span> <span class="tok-o">=</span> <span class="tok-mi">9999</span><span class="tok-p">;</span>
+<span class="tok-kd">let</span> <span class="tok-nx">formatted</span> <span class="tok-o">=</span> <span class="tok-err">`</span><span class="tok-nx">This</span> <span class="tok-nx">is</span> <span class="tok-nx">a</span> <span class="tok-nx">formatted</span> <span class="tok-nx">string</span> <span class="tok-nx">that</span>
+<span class="tok-nx">includes</span> <span class="tok-nx">the</span> <span class="tok-nx">multiline</span> <span class="tok-nx">string</span><span class="tok-o">:</span> <span class="tok-nx">$</span><span class="tok-p">{</span><span class="tok-nx">multiline</span><span class="tok-p">}</span> <span class="tok-nx">and</span> <span class="tok-nx">a</span> <span class="tok-nx">variable</span> <span class="tok-nx">$</span><span class="tok-p">{</span><span class="tok-nx">x</span><span class="tok-p">}</span><span class="tok-err">`</span><span class="tok-p">;</span>
+
+<span class="tok-kd">let</span> <span class="tok-nx">html</span> <span class="tok-o">=</span> <span class="tok-err">`</span><span class="tok-o">&lt;</span><span class="tok-nx">bold</span><span class="tok-o">&gt;</span><span class="tok-nx">This</span> <span class="tok-nx">is</span> <span class="tok-nx">some</span> <span class="tok-nx">HTML</span><span class="tok-o">&lt;</span><span class="tok-err">/bold&gt;`.;</span></code></pre></div></div>
+<div class="ulist"><ul><li><p>Whitespace is part of the string</p></li></ul></div></section>
+<section id="_functions"><h2>Functions</h2></section>
+<section id="_default_parameters"><h2>Default parameters</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">execute</span><span class="tok-p">(</span><span class="tok-nx">url</span><span class="tok-p">,</span> <span class="tok-nx">timeout</span><span class="tok-p">,</span> <span class="tok-nx">oncomplete</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+
+    <span class="tok-kd">let</span> <span class="tok-nx">timeout</span> <span class="tok-o">=</span> <span class="tok-nx">timeout</span> <span class="tok-o">||</span> <span class="tok-mi">2000</span><span class="tok-p">;</span>
+    <span class="tok-kd">let</span> <span class="tok-nx">oncomplete</span> <span class="tok-o">=</span> <span class="tok-nx">oncomplete</span> <span class="tok-o">||</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{};</span>
+
+    <span class="tok-c1">// ...</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_default_parameters_2"><h2>Default Parameters</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">execute</span><span class="tok-p">(</span><span class="tok-nx">url</span><span class="tok-p">,</span> <span class="tok-nx">timeout</span> <span class="tok-o">=</span> <span class="tok-mi">2000</span><span class="tok-p">,</span>
+                     <span class="tok-nx">oncomplete</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{})</span> <span class="tok-p">{</span>
+    <span class="tok-c1">// ...</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_default_parameters_3"><h2>Default Parameters</h2><div class="ulist"><ul><li><p>When mixed with default parameters, parameters without defaults are required</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-c1">// uses default timeout</span>
+<span class="tok-nx">makeRequest</span><span class="tok-p">(</span><span class="tok-s2">&quot;/foo&quot;</span><span class="tok-p">,</span> <span class="tok-kc">undefined</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">body</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nx">doSomething</span><span class="tok-p">(</span><span class="tok-nx">body</span><span class="tok-p">);</span>
+<span class="tok-p">});</span>
+
+<span class="tok-c1">// uses default timeout</span>
+<span class="tok-nx">makeRequest</span><span class="tok-p">(</span><span class="tok-s2">&quot;/foo&quot;</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// sets second parameter to null (does not use defaut)</span>
+<span class="tok-nx">makeRequest</span><span class="tok-p">(</span><span class="tok-s2">&quot;/foo&quot;</span><span class="tok-p">,</span> <span class="tok-kc">null</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">body</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nx">doSomething</span><span class="tok-p">(</span><span class="tok-nx">body</span><span class="tok-p">);</span>
+<span class="tok-p">});</span></code></pre></div></div></section>
+<section id="_default_parameters_4"><h2>Default Parameters</h2><div class="ulist"><ul><li><p>You can use a function to retrieve a default parameter value</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">getCallback</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+        <span class="tok-c1">// some code</span>
+    <span class="tok-p">};</span>
+<span class="tok-p">}</span>
+
+<span class="tok-kd">function</span> <span class="tok-nx">makeRequest</span><span class="tok-p">(</span><span class="tok-nx">url</span><span class="tok-p">,</span> <span class="tok-nx">timeout</span> <span class="tok-o">=</span> <span class="tok-mi">2000</span><span class="tok-p">,</span> <span class="tok-nx">callback</span> <span class="tok-o">=</span> <span class="tok-nx">getCallback</span><span class="tok-p">())</span> <span class="tok-p">{</span>
+
+    <span class="tok-c1">// the rest of the function</span>
+
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_rest_parameters"><h2>Rest Parameters</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">sum</span><span class="tok-p">(</span><span class="tok-nx">first</span><span class="tok-p">,</span> <span class="tok-p">...</span><span class="tok-nx">numbers</span><span class="tok-p">)</span> <span class="tok-p">{</span>  <b>(1)</b> <b>(2)</b>
+    <span class="tok-kd">let</span> <span class="tok-nx">result</span> <span class="tok-o">=</span> <span class="tok-nx">first</span><span class="tok-p">,</span>
+        <span class="tok-nx">i</span> <span class="tok-o">=</span> <span class="tok-mi">0</span><span class="tok-p">,</span>
+        <span class="tok-nx">len</span> <span class="tok-o">=</span> <span class="tok-nx">numbers</span><span class="tok-p">.</span><span class="tok-nx">length</span><span class="tok-p">;</span>
+
+    <span class="tok-k">while</span> <span class="tok-p">(</span><span class="tok-nx">i</span> <span class="tok-o">&lt;</span> <span class="tok-nx">len</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-nx">result</span> <span class="tok-o">+=</span> <span class="tok-nx">numbers</span><span class="tok-p">[</span><span class="tok-nx">i</span><span class="tok-p">];</span>
+        <span class="tok-nx">i</span><span class="tok-o">++</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-k">return</span> <span class="tok-nx">result</span><span class="tok-p">;</span>
+<span class="tok-p">}</span></code></pre></div></div>
+<div class="ulist"><ul><li class="fragment"><p>(1) <strong>numbers</strong> contains an array of the <em>rest</em> of the parameters</p></li><li class="fragment"><p>(2) You cannot place any parameters after the <em>rest</em> parameter</p></li></ul></div></section>
+<section id="_destructured_parameters"><h2>Destructured Parameters</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">setCookie</span><span class="tok-p">(</span><span class="tok-nx">name</span><span class="tok-p">,</span> <span class="tok-nx">value</span><span class="tok-p">,</span> <span class="tok-nx">options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+
+    <span class="tok-nx">options</span> <span class="tok-o">=</span> <span class="tok-nx">options</span> <span class="tok-o">||</span> <span class="tok-p">{};</span>
+
+    <span class="tok-kd">var</span> <span class="tok-nx">secure</span> <span class="tok-o">=</span> <span class="tok-nx">options</span><span class="tok-p">.</span><span class="tok-nx">secure</span><span class="tok-p">,</span>
+        <span class="tok-nx">path</span> <span class="tok-o">=</span> <span class="tok-nx">options</span><span class="tok-p">.</span><span class="tok-nx">path</span><span class="tok-p">,</span>
+        <span class="tok-nx">domain</span> <span class="tok-o">=</span> <span class="tok-nx">options</span><span class="tok-p">.</span><span class="tok-nx">domain</span><span class="tok-p">,</span>
+        <span class="tok-nx">expires</span> <span class="tok-o">=</span> <span class="tok-nx">options</span><span class="tok-p">.</span><span class="tok-nx">expires</span><span class="tok-p">;</span>
+
+    <span class="tok-c1">// ...</span>
+<span class="tok-p">}</span></code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-nx">setCookie</span><span class="tok-p">(</span><span class="tok-s2">&quot;type&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;js&quot;</span><span class="tok-p">,</span> <span class="tok-p">{</span>
+    <span class="tok-nx">secure</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+    <span class="tok-nx">expires</span><span class="tok-o">:</span> <span class="tok-mi">60000</span>
+<span class="tok-p">});</span></code></pre></div></div></section>
+<section id="_destructured_parameters_2"><h2>Destructured Parameters</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">setCookie</span><span class="tok-p">(</span><span class="tok-nx">name</span><span class="tok-p">,</span> <span class="tok-nx">value</span><span class="tok-p">,</span>
+	 <span class="tok-p">{</span> <span class="tok-nx">secure</span><span class="tok-p">,</span> <span class="tok-nx">path</span><span class="tok-p">,</span> <span class="tok-nx">domain</span><span class="tok-p">,</span> <span class="tok-nx">expires</span> <span class="tok-p">})</span> <span class="tok-p">{</span> <b>(1)</b>
+
+    <span class="tok-c1">// ...</span>
+<span class="tok-p">}</span></code></pre></div></div>
+<div class="ulist"><ul><li class="fragment"><p>(1) <em>destructs</em> passed in object into individual variables</p></li><li class="fragment"><p>Set to <strong>undefined</strong> if they&#8217;re not passed in</p></li></ul></div></section>
+<section id="_destructured_parameters_3"><h2>Destructured Parameters</h2><div class="ulist"><ul><li><p>Throws an error if argument isn&#8217;t provided</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">setCookie</span><span class="tok-p">(</span><span class="tok-nx">name</span><span class="tok-p">,</span> <span class="tok-nx">value</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-nx">secure</span><span class="tok-p">,</span> <span class="tok-nx">path</span><span class="tok-p">,</span> <span class="tok-nx">domain</span><span class="tok-p">,</span> <span class="tok-nx">expires</span> <span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-p">{})</span> <span class="tok-p">{</span>
+
+    <span class="tok-c1">// ...</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_symbols"><h2>Symbols</h2><div class="ulist"><ul><li class="fragment"><p>Creates values without a string literal</p></li><li class="fragment"><p>Immutable</p></li><li class="fragment"><p>New primitive type</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">let</span> <span class="tok-nx">firstName</span> <span class="tok-o">=</span> <span class="tok-nx">Symbol</span><span class="tok-p">(</span><span class="tok-s2">&quot;first name&quot;</span><span class="tok-p">);</span>
+<span class="tok-kd">let</span> <span class="tok-nx">lastName</span> <span class="tok-o">=</span> <span class="tok-nx">Symbol</span><span class="tok-p">;</span>
+<span class="tok-kd">let</span> <span class="tok-nx">person</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-p">[</span><span class="tok-nx">firstName</span><span class="tok-p">]</span><span class="tok-o">:</span> <span class="tok-s2">&quot;Kito&quot;</span>
+<span class="tok-p">};</span>
+
+<span class="tok-nb">Object</span><span class="tok-p">.</span><span class="tok-nx">defineProperty</span><span class="tok-p">(</span><span class="tok-nx">person</span><span class="tok-p">,</span> <span class="tok-nx">firstName</span><span class="tok-p">,</span>
+	<span class="tok-p">{</span> <span class="tok-nx">writable</span><span class="tok-o">:</span> <span class="tok-kc">false</span> <span class="tok-p">});</span><span class="tok-err">”</span>
+<span class="tok-nb">Object</span><span class="tok-p">.</span><span class="tok-nx">defineProperty</span><span class="tok-p">(</span><span class="tok-nx">person</span><span class="tok-p">,</span> <span class="tok-nx">lastName</span><span class="tok-p">,</span>
+	<span class="tok-p">{</span> <span class="tok-nx">writable</span><span class="tok-o">:</span> <span class="tok-kc">false</span> <span class="tok-p">});</span><span class="tok-err">”</span>
+
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">person</span><span class="tok-p">[</span><span class="tok-nx">firstName</span><span class="tok-p">]);</span>     <span class="tok-c1">// &quot;Kito&quot;</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">person</span><span class="tok-p">[</span><span class="tok-nx">lastName</span><span class="tok-p">]);</span>      <span class="tok-c1">// &quot;Zakas&quot;</span></code></pre></div></div></section>
+<section id="_objects"><h2>Objects</h2></section>
+<section id="_object_assign"><h2>Object.assign()</h2><div class="ulist"><ul><li class="fragment"><p>Like a mixin</p><div class="ulist"><ul><li><p>Copies members from supplier to receiver</p></li></ul></div></li><li class="fragment"><p>Can assign many suppliers to one object</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-nx">TheOriginal</span><span class="tok-p">()</span> <span class="tok-p">{</span> <span class="tok-cm">/*...*/</span> <span class="tok-p">}</span>
+<span class="tok-nx">TheOriginal</span><span class="tok-p">.</span><span class="tok-nx">prototype</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-nx">constructor</span><span class="tok-o">:</span> <span class="tok-nx">TheOriginal</span><span class="tok-p">,</span>
+    <span class="tok-nx">someValue</span><span class="tok-o">:</span> <span class="tok-mi">1</span><span class="tok-p">,</span>
+    <span class="tok-nx">doSomething</span><span class="tok-o">:</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span> <span class="tok-cm">/*...*/</span> <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+
+<span class="tok-kd">var</span> <span class="tok-nx">myObject</span> <span class="tok-o">=</span> <span class="tok-p">{}</span>
+<span class="tok-nb">Object</span><span class="tok-p">.</span><span class="tok-nx">assign</span><span class="tok-p">(</span><span class="tok-nx">myObject</span><span class="tok-p">,</span> <span class="tok-nx">TheOriginal</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">);</span>
+
+<span class="tok-nx">myObject</span><span class="tok-p">.</span><span class="tok-nx">doSomething</span><span class="tok-p">();</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">myObject</span><span class="tok-p">.</span><span class="tok-nx">someValue</span><span class="tok-p">);</span></code></pre></div></div></section>
+<section id="_object_observe"><h2>Object.observe()</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">var</span> <span class="tok-nx">model</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-c1">// some data</span>
+<span class="tok-p">};</span>
+
+<span class="tok-nb">Object</span><span class="tok-p">.</span><span class="tok-nx">observe</span><span class="tok-p">(</span><span class="tok-nx">model</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">changes</span><span class="tok-p">){</span>
+
+    <span class="tok-c1">// Aasynchronous callback</span>
+    <span class="tok-nx">changes</span><span class="tok-p">.</span><span class="tok-nx">forEach</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">change</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">change</span><span class="tok-p">.</span><span class="tok-nx">type</span><span class="tok-p">,</span> <span class="tok-nx">change</span><span class="tok-p">.</span><span class="tok-nx">name</span><span class="tok-p">,</span> <span class="tok-nx">change</span><span class="tok-p">.</span><span class="tok-nx">oldValue</span><span class="tok-p">);</span>
+    <span class="tok-p">});</span>
+
+<span class="tok-p">});</span></code></pre></div></div></section>
+<section id="_changing_prototypes"><h2>Changing Prototypes</h2><div class="ulist"><ul><li class="fragment"><p>Same as <em>proto</em> used in many JS engines</p></li><li class="fragment"><p>new setPrototypeOf() method</p></li></ul></div></section>
+<section id="_classes"><h2>Classes</h2><div class="ulist"><ul><li class="fragment"><p>Syntactic sugar for prototypical inheritance</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kr">class</span> <span class="tok-nx">View</span> <span class="tok-p">{</span>
+    <span class="tok-nx">constructor</span><span class="tok-p">(</span><span class="tok-nx">model</span><span class="tok-p">,</span> <span class="tok-nx">template</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">model</span> <span class="tok-o">=</span> <span class="tok-nx">model</span><span class="tok-p">;</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">template</span> <span class="tok-o">=</span> <span class="tok-nx">template</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-nx">render</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nx">_</span><span class="tok-p">.</span><span class="tok-nx">template</span><span class="tok-p">(</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">template</span><span class="tok-p">,</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">model</span><span class="tok-p">.</span><span class="tok-nx">toObject</span><span class="tok-p">());</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_classes_2"><h2>Classes</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kr">class</span> <span class="tok-nx">SpecialView</span> <span class="tok-kr">extends</span> <span class="tok-nx">View</span> <span class="tok-p">{</span>
+    <span class="tok-nx">render</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+        <span class="tok-kr">super</span><span class="tok-p">();</span>
+        <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s2">&quot;special render()!&quot;</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_iterators_and_generators"><h2>Iterators and Generators</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-o">*</span><span class="tok-nx">createIterator</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">yield</span> <span class="tok-mi">1</span><span class="tok-p">;</span>
+    <span class="tok-k">yield</span> <span class="tok-mi">2</span><span class="tok-p">;</span>
+    <span class="tok-k">yield</span> <span class="tok-mi">3</span><span class="tok-p">;</span>
+<span class="tok-p">}</span>
+
+<span class="tok-kd">let</span> <span class="tok-nx">iterator</span> <span class="tok-o">=</span> <span class="tok-nx">createIterator</span><span class="tok-p">();</span>
+
+<span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kd">let</span> <span class="tok-nx">i</span> <span class="tok-nx">of</span> <span class="tok-nx">iterator</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">i</span><span class="tok-p">);</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_iterators_and_generators_2"><h2>Iterators and Generators</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">function</span> <span class="tok-o">*</span><span class="tok-nx">createIterator</span><span class="tok-p">(</span><span class="tok-nx">items</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kd">let</span> <span class="tok-nx">i</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">;</span> <span class="tok-nx">i</span> <span class="tok-o">&lt;</span> <span class="tok-nx">items</span><span class="tok-p">.</span><span class="tok-nx">length</span><span class="tok-p">;</span> <span class="tok-nx">i</span><span class="tok-o">++</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">yield</span> <span class="tok-nx">items</span><span class="tok-p">[</span><span class="tok-nx">i</span><span class="tok-p">];</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+
+<span class="tok-kd">let</span> <span class="tok-nx">iterator</span> <span class="tok-o">=</span> <span class="tok-nx">createIterator</span><span class="tok-p">([</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">]);</span>
+
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">iterator</span><span class="tok-p">.</span><span class="tok-nx">next</span><span class="tok-p">());</span>
+	<span class="tok-c1">// &quot;{ value: 1, done: false }&quot;</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">iterator</span><span class="tok-p">.</span><span class="tok-nx">next</span><span class="tok-p">());</span>
+	<span class="tok-c1">// &quot;{ value: 2, done: false }&quot;</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">iterator</span><span class="tok-p">.</span><span class="tok-nx">next</span><span class="tok-p">());</span>
+	<span class="tok-c1">// &quot;{ value: undefined, done: true }&quot;</span>
+	<span class="tok-c1">// same for subsequent calls</span></code></pre></div></div></section>
+<section id="_promises"><h2>Promises</h2><div class="ulist"><ul><li class="fragment"><p>Cornerstone of ES6&#8217;s async behavior</p></li><li class="fragment"><p>A <strong>Promise</strong> can be in any one of these states:</p><div class="ulist"><ul><li><p>Pending</p></li><li><p>Fulfilled</p></li><li><p>Rejected</p></li><li><p>Settled</p></li></ul></div></li></ul></div></section>
+<section id="_promises_2"><h2>Promises</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-kd">var</span> <span class="tok-nx">thisPromiseCount</span> <span class="tok-o">=</span> <span class="tok-o">++</span><span class="tok-nx">promiseCount</span><span class="tok-p">;</span>
+
+ <span class="tok-c1">// We make a new promise: we promise the string &#39;result&#39; (after waiting 3s)</span>
+ <span class="tok-kd">var</span> <span class="tok-nx">p1</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Promise</span><span class="tok-p">(</span>
+   <span class="tok-c1">// The resolver function is called with the ability to resolve or</span>
+   <span class="tok-c1">// reject the promise</span>
+   <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">resolve</span><span class="tok-p">,</span> <span class="tok-nx">reject</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+     <span class="tok-c1">// This only is an example to create asynchronism</span>
+     <span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">setTimeout</span><span class="tok-p">(</span>
+       <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+         <span class="tok-c1">// We fulfill the promise !</span>
+         <span class="tok-nx">resolve</span><span class="tok-p">(</span><span class="tok-nx">thisPromiseCount</span><span class="tok-p">)</span>
+       <span class="tok-p">},</span> <span class="tok-nb">Math</span><span class="tok-p">.</span><span class="tok-nx">random</span><span class="tok-p">()</span> <span class="tok-o">*</span> <span class="tok-mi">2000</span> <span class="tok-o">+</span> <span class="tok-mi">1000</span><span class="tok-p">);</span>
+   <span class="tok-p">});</span>
+
+ <span class="tok-c1">// We define what to do when the promise is fulfilled</span>
+ <span class="tok-nx">p1</span><span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span>
+   <span class="tok-c1">// Just log the message and a value</span>
+   <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">val</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+     <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s2">&quot;Promise fulfilled! Value = &quot;</span> <span class="tok-o">+</span> <span class="tok-nx">val</span><span class="tok-p">);</span>
+   <span class="tok-p">});</span></code></pre></div></div></section>
+<section id="_modules"><h2>Modules</h2><div class="ulist"><ul><li class="fragment"><p>Lack of modules is a pain in the butt, especailly in JavaScript</p><div class="ulist"><ul><li><p>Core feature: encapsulation</p><div class="ulist"><ul><li><p>Functions, classes, variables declared inside a module are scoped to the module</p></li><li><p>Modules can <strong>export</strong> their members</p></li></ul></div></li></ul></div></li></ul></div></section>
+<section id="_modules_2"><h2>Modules</h2><div class="ulist"><ul><li class="fragment"><p>Two primary solutions exist today</p><div class="ulist"><ul><li><p>CommonJS</p><div class="ulist"><ul><li><p>Concisce syntax</p></li></ul></div></li><li><p>Mostly server-side</p><div class="ulist"><ul><li><p>Synchronous</p></li></ul></div></li><li><p>Asynchronous Module Definition (AMD)</p><div class="ulist"><ul><li><p>More complicated syntax</p></li><li><p>Mostly client-side</p></li><li><p>Asynchronous</p></li></ul></div></li></ul></div></li></ul></div></section>
+<section id="_modules_3"><h2>Modules</h2><div class="ulist"><ul><li class="fragment"><p>ES6 Modules combine features from both AMD and CommonJS</p></li><li class="fragment"><p>Supports synchronous and asynchronous loading</p></li><li class="fragment"><p>Supports cyclic references</p></li><li class="fragment"><p>Module structure is static</p></li></ul></div></section>
+<section id="_exports"><h2>Exports</h2><div class="ulist"><ul><li class="fragment"><p>Two kinds of exports:</p><div class="ulist"><ul><li><p>Default (one per module)</p><div class="ulist"><ul><li><p>Favored approach</p></li></ul></div></li><li><p>Named (multiple per module)</p></li></ul></div></li><li class="fragment"><p>A module can have both named and default exports</p></li></ul></div></section>
+<section id="_exports_2"><h2>Exports</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-c1">// myModule.js</span>
+
+<span class="tok-kr">export</span> <span class="tok-kd">var</span> <span class="tok-nx">id</span><span class="tok-p">;</span>
+<span class="tok-kd">var</span> <span class="tok-nx">name</span><span class="tok-p">;</span>
+<span class="tok-kr">const</span> <span class="tok-nx">MAX_ITEMS</span> <span class="tok-o">=</span> <span class="tok-mi">10000</span><span class="tok-p">;</span>
+
+<span class="tok-kd">function</span> <span class="tok-nx">process</span><span class="tok-p">(...</span><span class="tok-nx">items</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-c1">// ...</span>
+<span class="tok-p">};</span>
+
+<span class="tok-kr">export</span> <span class="tok-k">default</span> <span class="tok-kr">class</span> <span class="tok-nx">Runner</span> <span class="tok-p">{</span>
+    <span class="tok-kd">function</span> <span class="tok-nx">start</span><span class="tok-p">()</span> <span class="tok-p">{</span> <span class="tok-cm">/*...*/</span> <span class="tok-p">}</span>
+    <span class="tok-kd">function</span> <span class="tok-nx">stop</span><span class="tok-p">()</span> <span class="tok-p">{</span> <span class="tok-cm">/*...*/</span> <span class="tok-p">}</span>
+<span class="tok-p">};</span>
+
+<span class="tok-kr">export</span> <span class="tok-nx">process</span><span class="tok-p">;</span>
+<span class="tok-kr">export</span> <span class="tok-nx">name</span><span class="tok-p">;</span>
+<span class="tok-kr">export</span> <span class="tok-p">{</span> <span class="tok-nx">MAX_ITEMS</span> <span class="tok-nx">as</span> <span class="tok-nx">max</span><span class="tok-p">,</span> <span class="tok-nx">name</span> <span class="tok-p">};</span>
+<span class="tok-p">}</span></code></pre></div></div></section>
+<section id="_imports"><h2>Imports</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-c1">// Default</span>
+<span class="tok-kr">import</span> <span class="tok-nx">runner</span> <span class="tok-nx">from</span> <span class="tok-s2">&quot;src/my-module&quot;</span><span class="tok-p">;</span>
+
+<span class="tok-c1">// Default plus named</span>
+<span class="tok-kr">import</span> <span class="tok-nx">runner</span><span class="tok-p">,</span> <span class="tok-p">{</span><span class="tok-nx">process</span><span class="tok-p">,</span> <span class="tok-nx">name</span><span class="tok-p">}</span> <span class="tok-nx">from</span> <span class="tok-s2">&quot;src/my-module&quot;</span><span class="tok-p">;</span>
+
+<span class="tok-c1">// Just named</span>
+<span class="tok-kr">import</span> <span class="tok-p">{</span><span class="tok-nx">process</span><span class="tok-p">,</span> <span class="tok-nx">name</span><span class="tok-p">}</span> <span class="tok-nx">from</span> <span class="tok-s2">&quot;src/my-module&quot;</span><span class="tok-p">;</span></code></pre></div></div></section>
+<section id="_working_with_modules_programmatically"><h2>Working with Modules Programmatically</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-nx">System</span><span class="tok-p">.</span><span class="tok-kr">import</span><span class="tok-p">(</span><span class="tok-s1">&#39;my-module&#39;</span><span class="tok-p">)</span>
+    <span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-nx">my_module</span> <span class="tok-o">=&gt;</span> <span class="tok-p">{</span>
+        <span class="tok-c1">// Use the module</span>
+    <span class="tok-p">}).</span><span class="tok-k">catch</span><span class="tok-p">(</span><span class="tok-nx">error</span> <span class="tok-o">=&gt;</span> <span class="tok-p">{</span>
+        <span class="tok-c1">//...</span>
+    <span class="tok-p">});</span>
+
+<span class="tok-nx">Promise</span><span class="tok-p">.</span><span class="tok-nx">all</span><span class="tok-p">(</span>
+    <span class="tok-p">[</span><span class="tok-s1">&#39;module1&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;module2&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;module3&#39;</span><span class="tok-p">]</span>
+        <span class="tok-p">.</span><span class="tok-nx">map</span><span class="tok-p">(</span><span class="tok-nx">mod</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">System</span><span class="tok-p">.</span><span class="tok-kr">import</span><span class="tok-p">(</span><span class="tok-nx">mod</span><span class="tok-p">)))</span>
+    <span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(([</span><span class="tok-nx">module1</span><span class="tok-p">,</span> <span class="tok-nx">module2</span><span class="tok-p">,</span> <span class="tok-nx">module3</span><span class="tok-p">])</span> <span class="tok-o">=&gt;</span> <span class="tok-p">{</span>
+        <span class="tok-c1">// Use module1, module2, module3</span>
+    <span class="tok-p">});</span></code></pre></div></div></section>
+<section id="_loading_modules_in_html"><h2>Loading Modules in HTML</h2><div class="listingblock"><div class="content"><pre class="pygments highlight"><code class="html language-html"><span class="tok-nt">&lt;module</span> <span class="tok-na">src=</span><span class="tok-s">&quot;src/my-module.js</span><span class="tok-nt">&gt;&lt;/module&gt;</span></code></pre></div></div>
+<div class="ulist"><ul><li><p>Syntax supported by polyfills</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="pygments highlight"><code>&lt;script type="module"&gt;&lt;/script&gt;</code></pre></div></div></section>
+<section id="_other_features"><h2>Other features</h2><div class="ulist"><ul><li class="fragment"><p>Proxies</p><div class="ulist"><ul><li><p>Lets you define custom behavior for fundamental operations</p></li><li><p>(property lookup, assignment, enumeration, function invocation, etc.)</p></li></ul></div></li><li class="fragment"><p>Better unicode support</p></li><li class="fragment"><p>new String methods (includes(), startsWith(), endsWith(), etc.)</p></li><li class="fragment"><p>Regular expression improvements</p></li></ul></div></section>
+<section id="_browser_support"><h2>Browser Support</h2><div class="ulist"><ul><li><p>Partial support in newer browsers</p></li><li><p>Full matrix:
+<a href="http://kangax.github.io/compat-table/es6/" class="bare">http://kangax.github.io/compat-table/es6/</a></p></li><li><p>Several polyfills for specific features</p></li><li><p>Transpilers (compile to ES5)</p><div class="ulist"><ul><li><p>Traceur (Google)</p></li><li><p>Contiuuum (ES6 VM writting in ES3)</p></li></ul></div></li></ul></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.min.js"></script><script type="text/javascript">// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: false,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, blond, default, moon, night, serif, simple, sky, solarized)
+  theme: Reveal.getQueryHash().theme || 'default',
+  // Transition style (e.g., default, cube, page, concave, zoom, linear, fade, none)
+  transition: Reveal.getQueryHash().transition || 'default',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., default, none, slide, concave, convex, zoom)
+  backgroundTransition: 'default',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script></body></html>

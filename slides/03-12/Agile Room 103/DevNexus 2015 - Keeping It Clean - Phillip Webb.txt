@@ -1,0 +1,4 @@
+Keeping It Clean - Lessons learned from Open Source on how to… 
+Phillip Webb
+
+https://speakerdeck.com/philwebb/keeping-it-clean
