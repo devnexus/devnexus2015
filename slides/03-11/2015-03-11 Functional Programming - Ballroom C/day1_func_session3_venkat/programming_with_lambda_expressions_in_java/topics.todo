@@ -1,0 +1,23 @@
+Programming with Lambda Expressions in Java:
+  Venkat Subramaniam
+  Email: venkats@agiledeveloper.com
+  Twitter: @venkat_s
+  http://www.agiledeveloper.com download link
+  
+Topics:
+- The next big thing in Java
+- What's Lambda expressions?
+- Refactoring from external to internal iterator
+- Fundamental shift: from imperative to functional style
+- Mapping operation - eliminating mutability
+- Composing with lambda expressions
+- The lazy evaluations
+- Benefits of the new approach
+  - code clarity
+  - fewer errors
+  - easier parallelization
+- Easy parallelization
+- Summary
+
+You can download this topics list and code examples from:
+	http://www.agiledeveloper.com	 - downloads link

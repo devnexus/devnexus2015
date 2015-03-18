@@ -1,0 +1,1738 @@
+<!DOCTYPE HTML>
+<!-- <html lang="en-US"> -->
+<html lang="en-US" class="fade nonumbers">
+<!-- 
+  ^ a class of "fade" makes slides fade smoothly into one another
+ -->
+<!-- <html lang="en-US" class="nonumbers"> -->
+<!-- 
+  If you want no numbers on the slides add a "nonumbers" class 
+  to the HTML element.
+  Adding a class of "fade" will make slides fade into another. 
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Building and Debugging the Mobile Web</title>
+    <!-- 
+  If you upload your slides to the web, ensure that you have 
+  a good title - this shows up in search results and social
+  media links
+ -->
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+    <link rel="stylesheet" href="themes/mozilla/styles/partners.css">
+
+    <style type="text/css">
+        div[id$='bullets'].slide > div::after {
+            content: 'For Information only, do NOT present';
+            background: rgba(200, 0, 0, 0.5);
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            padding: 5px 20px;
+            transform: rotate(90deg) translate(52%, -150px);
+            border-radius: 5px;
+        }
+        .full div[id$='bullets'].slide > div::after {
+            animation: wiggle alternate 1s infinite;
+        }
+        @keyframes wiggle {
+            from {
+                transform: rotate(90deg) translate(52%, -150px);
+            }
+            to {
+                transform: rotate(90deg) translate(52%, -160px);
+            }
+        }
+    </style>
+</head>
+
+<body class="list">
+
+    <header class="caption">
+        <h1>Building and Debugging the Mobile Web</h1>
+        <p class="footer">
+            Jason Weathersby, Technical Evangelist, Mozilla
+            <a href="https://twitter.com/JasonWeathersby">@JasonWeathersby</a> or
+            <a href="mailto:jweathersby@mozilla.com">jweathersby@mozilla.com</a>
+        </p>
+    </header>
+    <aside class="talkdescription">
+        <p>This slide deck is using the shower system - roll over the previews to see the notes and click any slide to go into presentation mode. Then use keys to navigate.
+            <button onclick="goFullScreen()">Go fullscreen</button>
+        </p>
+        <p class="abstract">
+            <strong>Abstract: </strong> This talk discusses Firefox OS.
+        </p>
+    </aside>
+    <!-- 
+    Simply copy the whole block for each slide you want.
+  Special slides get extra classes. Each slide needs an ID 
+  to allow for bookmarking and target jumping.
+-->
+
+    <div id="cover" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Building and Debugging the Mobile Web</h2>
+                </header>
+                <img src="pictures/latest/firefoxdev.png" class="middle shadow" height="400" alt="Firefox Developer Edition">
+                <!--<div class="right">
+                    <div id="foxtail-phone">
+                        <div id="foxtail-overlay">
+                            <div id="foxtail"></div>
+                        </div>
+                    </div>
+                </div>-->
+                <br>
+                <small class="byline">
+        twitter: @jasonweathersby email: jweathersby@mozilla.com
+      </small>
+                <footer class="notes">
+                    This is a simple cover slide with an image in the middle
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <!-- end slide block -->
+
+    <!-- ===================================================================
+Firefox OS 
+======================================================================== -->
+
+    <div id="deserves" class="slide cover h">
+        <div>
+            <section>
+                <header>
+
+                </header>
+                <img src="pictures/fxos/Firefox_Layers.png" alt="Keep calm and trust HTML5" class="middle shadow" height="450">
+                <footer class="notes">
+                    Explain that unlike other platforms, HTML5 is not a second class citizen in Firefox OS but that the system itself, the UI of the OS, is written in HTML5. Instead of hoping for support of HTML5 features, the OS is very much dependent on them.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+
+    <div id="forall" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Upgrading the mobile world</h2>
+                </header>
+                <figure class="right ">
+                    <img src="pictures/latest/phones.png" alt="Phone Selection" height="400">
+                </figure>
+                <ul class="inner">
+                    <li class="active">Targeted at new, emerging markets</li>
+                    <li>Very affordable hardware</li>
+                    <li>No credit card needed - client billing</li>
+                    <li>Web technologies through and through</li>
+                    <li>Released in 29 countries including Brazil, Germany, Poland, Hungary, Venezuela, Serbia, Columbia</li>
+                    <li>Available in parts of the Middle East and Africa in Q2 through Orange<li>
+                    <li>13 Operators including Telefonica, Deutsche Telekom, Telenor</li>
+                    <li>16 Smart Phones</li>
+                    <li>Mozilla, KDDI, LG U+, Telefónica and Verizon Wireless working on phones for 2016 various form factors – flips, sliders and slates<li> 
+                </ul>
+                <footer class="notes">
+                    Firefox OS was created to bring users of feature phones into the web-enabled mobile world. It is meant to cater to the markets not covered by iOS and Android. Yes, you can buy cheap Androids world-wide but the version of Android they support doesn't have an out-of-the-box browser that allows you to do interesting things on the web. Much like Firefox and Opera for Android allow more users world-wide to have a great web experience without having the latest hardware, Firefox OS goes further. Its main goal is to bring millions of new users to the web on their mobile devices without getting a second-grade experience. https://blog.mozilla.org/blog/2014/02/23/firefox-os-unleashes-the-future-of-mobile/
+                </footer>
+            </section>
+        </div>
+    </div>
+                <div id="panasonic" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Panasonic UHD (Ultra HD) LED VIERA 4K TV</h2>
+                        </header>
+                        <img src="pictures/latest/panasonic2.jpg" alt="Firefox OS Panasonic TV" class="middle shadow" height="400">
+                        <p class="demourl">
+                            <a href="http://news.panasonic.co.uk/pressreleases/panasonic-unveils-new-my-home-screen-2-0-tv-user-interface-powered-by-firefox-os-1120532">Panasonic Press Release
+                            </a>
+                        </p>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+   <div id="osother" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Firefox OS not just for phones</h2>
+                </header>
+                <figure class="right shadow ">
+                    <img src="pictures/latest/iot.png" alt="Firefox OS other" height="300">
+                    
+                </figure>
+                
+                <ul class="inner">
+                    <li class="active">Matchstick Streaming Stick</li>
+                    <li>KDDI Open Web Board for use with IOT Applications</li>
+                    <li>Telenor Gonzo Always on Camera project</li>
+                    <li>Firefox OS has been ported to Raspberry Pi<li>
+                    <li>Apps written for Firefox OS that communicate to Raspberry Pi (node.js)</li>
+                </ul>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>    <!-- ===================================================================
+OPEN WEB APPS 
+======================================================================== -->
+
+    <div id="zomgopenapps" class="slide shout">
+        <div>
+            <section>
+                <header>
+                    <h2>Open Web Apps</h2>
+                </header>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="manifest" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Defined by manifest</h2>
+                </header>
+                <pre>
+        <code>{</code>
+        <code>  "name": "My App",</code>
+        <code>  "description": "My elevator pitch goes here",</code>
+        <code>  "launch_path": "/",</code>
+        <code>  "icons": { "128": "/img/icon-128.png" },</code>
+        <code>  "developer": {</code>
+        <code>    "name": "Your name or organization",</code>
+        <code>    "url": "http://your-homepage-here.org"</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+                <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Apps/Manifest">App manifest</a>
+                </p>
+                <footer class="notes">
+                    The main step to turn an HTML5 page/app into a Firefox App is to define an app manifest. These are simple files in JSON defining the name of your app, where the icons are and what permissions you need for the application to work. They need to be sent with the right MIME type on the server and get submitted to the Mozilla marketplace. See them as a quick description of your app.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="threekinds" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Three levels of access&hellip;</h2>
+                </header>
+                <ul>
+                    <li>
+                        <mark>Hosted apps</mark>- stored on your server, easy to upgrade, limited access.</li>
+                    <li>
+                        <mark>Privileged apps</mark>- reviewed by the App store, packaged and signed</li>
+                    <li>
+                        <mark>Certified apps</mark>- part of the OS, only by Mozilla and partners</li>
+                </ul>
+                <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Apps/App_permissions">App permissions</a>
+                </p>
+                <footer class="notes">
+                    There are three different type of apps in Firefox OS: Hosted Apps, Privileged apps and Certified apps. The first kind is hosted on your own server and has access to a limited amount of extra functionality Firefox OS offers on top of what HTML5 gives you. Privileged apps have much more access to the hardware and must be hosted by Mozilla. Certified apps are part of the operating system and are only built by Mozilla and partners.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="installapp" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Install apps from the web</h2>
+                </header>
+                <pre>
+        <code>var installapp = navigator.mozApps.install(manifestURL);</code>
+        <code>installapp.onsuccess = function(data) {</code>
+        <code>  // App is installed</code>
+        <code>};</code>
+        <code>installapp.onerror = function() {</code>
+        <code> // App wasn't installed, info is in </code>
+        <code> // installapp.error.name</code>
+        <code>};</code>
+        </pre>
+                <p>AddType application/x-web-app-manifest+json .webapp</p>
+                <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Apps.install">Install App Code</a>
+                </p>
+
+                <footer class="notes">
+                    Installing applications from the web is possible by using the open web apps API, which is part of the WebAPI work in Mozilla. You can test if navigator.mozApps is supported and then create a button that calls the install method pointing to the URL of the manifest file of the app to be installed. You then get onsuccess and onerror handlers to deal with the returned objects of the install process. This means that any mobile friendly web site can be turned into an app in a few minutes, and that all the work you put into making your sites found in search engines wasn't wasted, but actually is now advertising for your app.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="marketplace" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Firefox OS Marketplace</h2>
+                </header>
+                <img src="pictures/fxos/marketplace.png" alt="Firefox OS Marketplace" class="middle shadow" height="400">
+                <p class="demourl">
+                    <a href="https://marketplace.firefox.com">https://marketplace.firefox.com/</a>
+                </p>
+                <footer class="notes">
+                    The Firefox OS marketplace is where you can get apps for Firefox OS. It is the end user facing resource for new apps and your apps will show up here.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div id="coreapps1" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Core Apps</h2>
+                </header>
+                <ul class="inner" style="list-style:none">
+
+                    <li class="active">
+                        <img class="middle " alt="coming from email" src="pictures/latest/homescreen.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="redirected to landing" src="pictures/latest/settings.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="redirected to landing" src="pictures/latest/email.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/calendar.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/clock.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/fmradio.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/marketplace.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/heremaps.png"></img>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id="socialapps1" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Social Apps</h2>
+                </header>
+                <ul class="inner">
+
+                    <li class="active">
+                        <img class="middle " alt="coming from email" src="pictures/latest/twitter.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="redirected to landing" src="pictures/latest/facebook.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="redirected to landing" src="pictures/latest/buzzfeed.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/messageme.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/rormix.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="pointless menu" src="pictures/latest/youtube.png"></img>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div id="gameapps1" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Games</h2>
+                </header>
+                <ul class="inner">
+
+                    <li class="active">
+                        <img class="middle " alt="coming from email" src="pictures/latest/ageofbarb.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="redirected to landing" src="pictures/latest/skull.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle " alt="redirected to landing" src="pictures/latest/steelstory.png"></img>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div id="gameappslandscape" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Games</h2>
+                </header>
+                <ul class="inner">
+
+
+                    <li class="active">
+                        <img class="middle shadow" alt="redirected to landing" src="pictures/latest/cuttherope.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle shadow" alt="redirected to landing" src="pictures/latest/captainrogers.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle shadow" alt="pointless menu" src="pictures/latest/jewels.png"></img>
+                    </li>
+                    <li>
+                        <img class="middle shadow" alt="pointless menu" src="pictures/latest/shanghai.png"></img>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+WEB APIS
+======================================================================== -->
+
+    <div id="zomgapis" class="slide shout">
+        <div>
+            <section>
+                <header>
+                    <h2>WebAPIs</h2>
+                </header>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="webapis" class="slide h">
+        <div>
+            <section>
+                <header>
+                    <h2>Web APIs</h2>
+                </header>
+                <img src="pictures/fxos/webapi.png" height="400" class="middle" alt="WebAPI wiki">
+                <p class="demourl">
+                    <a href="https://wiki.mozilla.org/WebAPI">WebAPI Wiki</a>
+                </p>
+                <footer class="notes">
+                    The WebAPI effort of Mozilla is tracked and described on the wiki.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div id="webapilist" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web APIs (hosted apps)</h2>
+                </header>
+                <ul class="inline">
+                    <li>WebRTC - getUserMedia, mozRTCPeerConnection, and DataChannels (2.0)</li>
+                    <li>Vibration API</li>
+                    <li>Screen Orientation</li>
+                    <li>Geolocation API</li>
+                    <li>Open WebApps</li>
+                    <li>Network Information API</li>
+                    <li>Battery Status API</li>
+                    <li>Alarm API</li>
+                    <li>Push API</li>
+                    <li>Notifications API (2.0)</li>
+                    <li>WebFM API / FMRadio</li>
+                    <li>WebPayment</li>
+                    <li>IndexedDB</li>
+                    <li>Ambient light sensor</li>
+                    <li>Proximity sensor</li>
+                    <li>Pointer Lock API</li>
+                    <li>File Handle API</li>
+                    <li>Web Activities</li>
+                </ul>
+
+                <footer class="notes">
+                    Hosted applications, meaning HTML5 apps you run on your own server, get the full functionality of HTML5 and additional API support shown here. All of these APIs are defined on the Mozilla Wiki and proposals to the standard bodies. Some of them have already been implemented in other other browsers, like the geolocation API. For now, however, only Firefox OS gives you all of them. These APIs bring much needed extra functionality to the HTML5 stack.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="battery" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Battery API</h2>
+                </header>
+                <pre>
+          <code>var b = navigator.battery;</code>
+          <code>if (b) {</code>
+          <code>  var level = Math.round(b.level * 100) + "%",</code>
+          <code>      charging = (b.charging) ? "" : "not ",</code>
+          <code>      chargeTime = parseInt(b.chargingTime / 60, 10),</code>
+          <code>      dischargeTime = parseInt(b.dischargingTime/60,10);</code>
+          <code>  b.addEventListener("levelchange", show);</code>
+          <code>  b.addEventListener("chargingchange", show);</code>
+          <code>  b.addEventListener("chargingtimechange", show);</code>
+          <code>  b.addEventListener("dischargingtimechange", show);</code>
+          <code>}</code>
+        </pre>
+                <footer class="notes">
+                    This is an example of how to use one of those APIs. They come with properties, methods and fire a lot of events which makes it easy to include them in your own solutions. And as you can see using a simple if statement around your code ensures that only environments that support it execute your code.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <div id="geolocation" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API</h2>
+                </header>
+                <img src="pictures/fxos/share.png" alt="share geolocation" class="right phone-shots-far">
+                <pre>
+        <code>navigator.geolocation.getCurrentPosition(function (position) {</code>
+        <code>   geo.innerHTML = "Lat:" + </code>
+        <code>   position.coords.latitude + </code>
+        <code>", Long:" + position.coords.longitude;</code>
+        <code>    },</code>
+        <code>    function () {</code>
+        <code>        geo.innerHTML = "Failed...";</code>
+        <code>    });</code>
+        Need permissions in webapp.manifest.
+        <code>"permissions": {</code>
+        <code>        "geolocation": {</code>
+        <code>            "description" : "location"</code>
+        <code>        }</code>
+        <code>    }</code>
+        </pre>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="notificationapi" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Notification API</h2>
+                </header>
+                <img src="pictures/fxos/notification.png" alt="notification" class="right shadow  phone-shots-far ">
+                <pre>
+        <code>Notification.requestPermission(function (permission) {</code>
+        <code>  if(!("permission" in Notification)) {</code>
+        <code>    Notification.permission = permission;</code>
+        <code>   }</code>
+        <code>});</code>
+        <code>if (Notification.permission === "granted") {</code>
+        <code>  new Notification("See this", {</code>
+        <code>    body : "This is a notification"</code>
+        <code>  });</code>
+        <code>}</code>
+        <code>//avoid prompt by adding to manifest</code>
+        <code>   "desktop-notification": {</code>
+      	<code>		"description": "To show notifications"</code>
+    	<code>	},</code>
+        </pre>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="mozpay" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Payments (Bit Coin anyone?)</h2>
+                </header>
+                <img class="right shadow" alt="pointless menu" src="pictures/latest/cuba.jpg"></img>
+                <pre>
+        <code>  //paymentToken is a signed</code> 
+        <code>  //JSON Web Token (JWT)</code> 
+        <code>  //with payment details  </code>
+        <code></code>
+        <code>  var buyme = </code>
+        <code>  navigator.mozPay(paymentToken);</code>
+        <code>  buyme.onsuccess = function(event){</code>
+        <code>    //Poll server to verify payment</code>
+        <code>  }</code>
+        </pre>
+                <p><a href="https://developer.mozilla.org/en-US/Marketplace/Monetization/In-app_payments_section/mozPay_iap ">mozPay,</a>
+                    <a href="https://developer.mozilla.org/en-US/Marketplace/Monetization/In-app_payments_section/fxPay_iap">In App Payments - fxpay for serverless support,</a>
+                    <a href="https://hacks.mozilla.org/2013/10/monetization-with-inneractive-on-firefox-os/">Inneractive Ads</a>
+                </p>
+
+
+
+
+                Make sure to implement receipt validation in your code, which can be tested in the simulator:
+                <a href="https://developer.mozilla.org/en-US/Apps/Publishing/Validating_a_receipt">Validating a Receipt Paid App</a>.
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="PageVisibility" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Page Visibility API</h2>
+                </header>
+                <img class="right shadow" alt="pointless menu" src="pictures/latest/eye.jpg"></img>
+                <pre>
+        <code>//Not really a specific to Fxos</code>
+        <code>document.addEventListener("visibilitychange",</code>
+        <code> function () {</code>
+        <code>if (document.hidden) {</code>
+        <code>  console.log("App is hidden");</code>
+        <code>} else {</code>
+        <code>  console.log("App has focus");</code>
+        <code>} });</code>
+        </pre>
+                <footer class="notes">Not a web api but good to know when developing
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="webworkers" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Workers with 1.3></h2>
+                </header>
+                <pre>
+<code>var myWorker = new Worker("js/worker.js");</code>
+<code>myWorker.onmessage = function (oEvent) {</code>
+<code>  alert("Worker said : " + oEvent.data);</code>
+<code>};</code>
+<code>myWorker.postMessage("John");</code>
+<code>//worker.js</code>
+<code>onmessage = function (oEvent) {</code>
+<code>  self.setTimeout(</code>
+<code>    function() {</code>
+<code>    	  postMessage("Hi " + oEvent.data);</code>
+<code>    }, Math.random() * 2000 + 1000);</code>
+<code>};</code>
+        </pre>
+                <footer class="notes">Not a web api but good to know when developing
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <div id="promises" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Promises with 1.4></h2>
+                </header>
+                <pre>
+<code>var p1 = new Promise(</code>
+<code>  function(resolve, reject) {</code>
+<code>    window.setTimeout(</code>
+<code>      function() {</code>
+<code>        var secs = Math.random() * 2000 + 1000;</code>
+<code>        resolve(secs / 1000);</code>
+<code>     }, secs);</code>
+<code>    });</code>
+<code>p1.then(</code>
+<code>  function(val) {</code>
+<code>    alert("promise done in " + val + " secs");</code>
+<code>   });</code>
+        </pre>
+                <footer class="notes">Not a web api but good to know when developing
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="webapilistprivileged" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web APIs (privileged apps)</h2>
+                </header>
+                <ul class="inline">
+                    <li>Device Storage API</li>
+                    <li>Browser API</li>
+                    <li>TCP Socket API</li>
+                    <li>Contacts API</li>
+                    <li>systemXHR</li>
+                    <li>Keyboard</li>
+                    <li>Camera API - as of (2.0)</li>
+                    <li>CameraControl API (2.0)</li>
+                    <li>Mobile Identity API (2.0)</li>
+                    <li>Feature Detection (2.0)</li>
+                    <li>NFC API (2.0)</li>
+                    <li>Firefox Accounts (2.0)</li>
+                </ul>
+                Need type set in manifest.webapp
+                <pre>
+        <code> "type": "privileged"</code>
+      </pre>
+
+                <footer class="notes">
+                    Privileged apps have access to more APIs and those dealing with content of more sensitive nature like storing information on the device's file system, accessing the contacts list or loading third party data from the web. To recap, privileged apps need to be packaged up, submitted to the marketplace and delivered from Mozilla's infrastructure. We can not allow just any server on the web to access the user's address book as that would allow the creation of malware in a very easy fashion.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="contactsapi" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Contacts API</h2>
+                </header>
+                <pre>
+          <code>var contact = new mozContact({name: "William"});</code>
+          <code>var request = navigator.mozContacts.save(contact);</code>
+          <code>request.onsuccess = function() {</code>
+          <code>  // contact generated</code>
+          <code>};</code>
+          <code>request.onerror = function() {</code>
+          <code>  // contact generation failed</code>
+          <code>};</code>
+          Permission must be set in manifest.webapp
+          <code>"contacts":{ "access": "readwrite" },</code>
+        </pre>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="device storage" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Device Storage API</h2>
+                </header>
+                <pre>
+          <code>var sdcard = navigator.getDeviceStorage("sdcard");</code>
+          <code>var file   = new Blob([vcard], {type: "text/plain"});</code>
+          <code>var request = sdcard.addNamed(file, "test/my-file.vcf");</code>
+          <code>request.onsuccess = function () {</code>
+          <code>..</code>
+          <code>}</code>
+          <code>request.onerror = function () {</code>
+          <code>..</code>
+          <code>} </code>
+          Permission must be set in manifest.webapp
+          <code>"device-storage:sdcard":{ "access": "readwrite" },</code>
+          <code>"device-storage:pictures":{ "access": "readwrite" }, </code>
+        </pre>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="cross domain" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Cross Domain XML Httprequest</h2>
+                </header>
+                <pre>
+          <code>var xhr = new XMLHttpRequest({mozSystem: true});</code>
+          <code>xhr.open("GET", "http://urltoreadme/README.md", true);</code>
+          <code>xhr.onreadystatechange = function () {</code>
+          <code>    if (xhr.status === 200 && xhr.readyState === 4) {</code>
+          <code>    }</code>
+          <code>}</code>
+          <code>xhr.onerror = function () {....};</code>
+          <code>xhr.send();</code>
+          Permission must be set in manifest.webapp
+          <code> "systemXHR": {},  </code>
+        </pre>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="webapilistcertified" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web APIs (certified apps)</h2>
+                </header>
+                <ul class="inline">
+                    <li>Telephony</li>
+                    <li>WebSMS</li>
+                    <li>Idle API</li>
+                    <li>Settings API</li>
+                    <li>Power Management API</li>
+                    <li>Mobile Connection API</li>
+                    <li>WiFi Information API</li>
+                    <li>Bluetooth</li>
+                    <li>Permissions API</li>
+                    <li>Network Stats API</li>
+                    <li>Time/Clock API</li>
+                    <li>Attention screen</li>
+                    <li>Voicemail</li>
+                    <li>Wappush</li>
+                    <li>Background Services</li>
+                </ul>
+
+                <footer class="notes">
+                    Certified apps are the apps that make up the operating system itself. They are only built by Mozilla and partners and have full access to the hardware of the device, for example to make phone calls or change permissions on the device.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+WEB ACTIVITIES
+======================================================================== -->
+
+    <div id="zomgactivities" class="slide shout">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Activities</h2>
+                </header>
+                <img class="right shadow" alt="pointless menu" src="pictures/latest/web.jpg"></img>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div id="activities" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web activities</h2>
+                </header>
+                <ul class="lots">
+                    <li>browse</li>
+                    <li>configure</li>
+                    <li>costcontrol</li>
+                    <li>dial</li>
+                    <li>open</li>
+                    <li>pick</li>
+                    <li>record</li>
+                    <li>save-bookmark</li>
+                    <li>share</li>
+                    <li>view</li>
+                    <li>update</li>
+                    <li>new: type:"mail", “websms/sms” or “webcontacts/contact”</li>
+                </ul>
+                <p class="demourl">
+                     <a href="https://developer.mozilla.org/en-US/docs/WebAPI/Web_Activities">WebActivities Description</a>
+                </p>
+                <footer class="notes">
+                    If you want to access the camera or the address book without packaging your application, there is an alternative called Web Activities. These are much like Web Intents were for Chrome, but more focused on real use cases of the web rather than Android. Using Web Activities you can access the hardware without having to authenticate on the user's behalf. Instead, the users get prompted to use the apps they always use to give you what your app wants.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div id="webactivityservermanifest" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Activity Receiver Manifest</h2>
+                </header>
+                <pre>
+
+        <code>"activities": {</code>
+        <code>    "pick": {</code>
+        <code>      "filters": {</code>
+        <code>        "type": ["image/*", "image/jpeg", "image/png"]</code>
+        <code>        },</code>
+        <code>      "disposition": "inline"</code>
+        <code>      "returnValue": true, </code>
+        <code>      "href": "/index.html#pick"</code>
+        <code>    }, </code>
+      </pre>
+                <footer class="notes">
+                    window, new window or inline with overlay or popup https://developer.mozilla.org/en-US/docs/WebAPI/Web_Activities must be installed packaged app to be a receiver.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="webactivityservercode" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Activity Receiver Handler</h2>
+                </header>
+                <pre>
+
+        <code>navigator.mozSetMessageHandler('activity',function(activityRequest) {</code> 
+        <code>  var option = activityRequest.source;</code>
+        <code>  if (activityRequest.source.name === "pick") {</code>
+        <code>    // Do something to handle the activity</code>
+        <code>    if (picture) {</code>
+        <code>      activityRequest.postResult(picture);</code>
+        <code>    } else {</code>
+        <code>      activityRequest.postError("Unable to provide a picture");</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>});</code>
+      </pre>
+                <footer class="notes">
+                    window, new window or inline with overlay or popup https://developer.mozilla.org/en-US/docs/WebAPI/Web_Activities
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="webactivitysendercode" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Activity Sender 1(2)</h2>
+                </header>
+                <pre>
+        <img src="pictures/fxos/pick-activity.jpg" alt="Pick activity" class="right shadow">
+        <code>var activity = new MozActivity({</code>
+        <code>  name: "pick",</code>
+        <code>  // Provide the data required by the</code>
+        <code>  //filter of the activity</code>
+        <code>  data: {</code>
+        <code>    type: "image/jpeg"</code>
+        <code>  }</code>
+        <code>});</code>
+      </pre>
+                <footer class="notes">
+                    The 'pick' activity is most probably the most useful one, as it allows you to tell the user that you want something from the device. In this case we define in the MIME type array that we are expecting an image. This would result in the screenshot shown on the right - the user gets asked to give us an image, either from the wallpaper or the photos folder or by taking a new photo with the camera.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="imageactivity2" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Activity Sender 2(2)</h2>
+                </header>
+                <pre>
+        <code>activity.onsuccess = function () {</code>
+        <code>  var img = document.createElement("img");</code>
+        <code>  if (this.result.blob.type.indexOf("image") != -1) {</code>
+        <code>    img.src = window.URL.createObjectURL(this.result.blob);</code>
+        <code>  }</code>
+        <code>};</code>
+        <code>activity.onerror = function () { // error</code>
+        <code>};</code>
+      </pre>
+                <footer class="notes">
+                    To retrieve the photo all you need is a simple event handler in which you get the image as a data blob and you can play with it in your app.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div id="callactivity" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Sending a number to the phone</h2>
+                </header>
+                <pre>
+        <img src="pictures/fxos/dialer.png" alt="Pick activity" class="phone-shots right shadow">
+        <code>var call = new MozActivity({</code>
+        <code>  name: "dial",</code>
+        <code>  data: {</code>
+        <code>    number: "+46777888999"</code>
+        <code>  }</code>
+        <code>});</code>
+      </pre>
+                <footer class="notes">
+                    This, as an example, is a call activity. When this JavaScript executes, the user will be sent to the dialer app (or Skype, depending on what app was defined as the default one), the number is sent to the app and the user needs to initiate the call. This is the main difference to WebAPIs - the user has the final say. When the call is denied or the user hung up the phone would go back to your app.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="addcontactwebactivity" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Adding a Contact with Web API</h2>
+                </header>
+                <pre>
+        <img src="pictures/fxos/addcontact.png" alt="add contact activity" class="phone-shots right shadow">
+        <code>var newContact = new MozActivity({</code>
+        <code>  name: "new", </code>
+        <code>  data: {</code>
+        <code>    type: "webcontacts/contact",</code>
+        <code>    params: { </code>
+        <code>      givenName: "Robert",</code>
+        <code>      lastName: "Nyman",</code>
+        <code>      company: "Mozilla"</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>});</code>
+      </pre>
+                <footer class="notes">
+                    Only has one handler
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="boilerplate" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Web Activities Boiler Plate</h2>
+                </header>
+                <img src="pictures/fxos/boilerplate.jpg" alt="Firefox OS Boiler Plate" class="middle shadow" height="400">
+                <p class="demourl">
+                    <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boiler Plate app</a>
+                </p>
+                <footer class="notes">
+                    The Firefox OS Boiler Plate app by Robert Nyman is a perfect start to get accustomed to Web Activities. It is a showcase of buttons calling different web activities. Simply use the ones you want to have and delete the others. The code is highly commented to show you where to put your functionality.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="android" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Activities/Hosted Apps on Android</h2>
+                </header>
+                <figure class="middle shadow swing frame">
+                    <img src="pictures/fxos/foxkeh-android.png" alt="Foxkeh loves android">
+                </figure>
+                <footer class="notes">
+                    The great news is that if you have Firefox on Android, this functionality is also available outside of Firefox OS for you - any Android device will do.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <div id="androidapk" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>APK Factory</h2>
+                </header>
+                <figure>
+                    <img src="pictures/latest/apkandroidsimc.png" class="middle" height="450" alt="APK Factory">
+                </figure>
+                <footer class="notes">
+                    no desktop shortcut is needed. Staring with version 29
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <div id="apkgeneration" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>APK Factory Access</h2>
+                </header>
+
+                <li>Automatic - Done when installing Firefox OS App from Marketplace with Fennec installed</li>
+                <li>Sideload - Manifest link available in the Marketplace</li>
+
+                <pre>
+ Install App - Mac Example
+ <code>curl "https://controller.apk.firefox.com/application.apk? manifestUrl=</code>
+ <code>https://marketplace.firefox.com/app/</code>
+ <code>c599acd5-2ced-42b7-a5a9-0096a8da6176/manifest.webapp"</code>
+ <code> -o "bumpertest.apk" && adb install bumpertest.apk </code> 
+      </pre>
+                <footer class="notes">
+                    APK - Android Package File see bugs https://bugzilla.mozilla.org/show_bug.cgi?id=988615 and https://bugzilla.mozilla.org/show_bug.cgi?id=988450
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- ===================================================================
+DYNAMIC APP SEARCH
+======================================================================== -->
+
+
+    <div id="zomgbuildframeworks" class="slide shout">
+        <div>
+            <section>
+                <header>
+                    <h2>Framework Generators</h2>
+                </header>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+
+    <div id="cordovapluginsupport" class="slide h">
+        <div>
+            <section>
+                <header>
+                    <h2>Cordova Plugin Support</h2>
+                </header>
+                <div style="list-style-type: none;">
+                    <img src="pictures/latest/developmentsite.png" alt="cordova dev site" class="right shadow" height="120">
+
+                    <p>
+                        Full or Partial Support for 15 Plugins
+                        <table class="plugin-table">
+                            <tr>
+                                <td class="plugin-cell">Battery Status </td>
+                                <td><span class="plugin-label label-success">Full Support (next version)</span>
+                                </td>
+                                <td class="plugin-cell">Camera</td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Console </td>
+                                <td><span class="plugin-label label-success">Full Support</span>
+                                </td>
+                                <td class="plugin-cell">Contacts </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Device </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                                <td class="plugin-cell">Device Motion </td>
+                                <td><span class="plugin-label label-success">Full Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Device Orientation </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                                <td class="plugin-cell">Dialogs </td>
+                                <td><span class="plugin-label label-success">Full Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">File </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                                <td class="plugin-cell">File Transfer </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Geolocation </td>
+                                <td><span class="plugin-label label-success">Full Support</span>
+                                </td>
+                                <td class="plugin-cell">Globalization </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">In App Browser </td>
+                                <td><span class="plugin-label label-warning">Partial Support</span>
+                                </td>
+                                <td class="plugin-cell">Media </td>
+                                <td><span class="plugin-label label-danger">Not Supported</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Media Capture </td>
+                                <td><span class="plugin-label label-danger">Not Supported</span>
+                                </td>
+                                <td class="plugin-cell">Network Information </td>
+                                <td><span class="plugin-label label-success">Full Support</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Splashscreen </td>
+                                <td><span class="plugin-label label-default">Not Applicable</span>
+                                </td>
+                                <td class="plugin-cell">Statusbar </td>
+                                <td><span class="plugin-label label-default">Not Applicable</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="plugin-cell">Vibration </td>
+                                <td><span class="plugin-label label-success">Full Support</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+                <p class="demourl">
+                    <a href="http://mozilla-cordova.github.io/">http://mozilla-cordova.github.io/</a>
+                </p>
+                <footer class="notes">
+                    https://github.com/mozilla-cordova/cordovasample
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <div id="cordovapgdevapp" class="slide h">
+        <div>
+            <section>
+                <header>
+                    <h2>Phonegap Developer App</h2>
+                </header>
+                <ul class="inner">
+                    <div style="list-style-type: none;">
+                        <li class="active">
+                            <img src="pictures/latest/pgdevapp1.png" class="middle" height="400" alt="Cordova Firefox OS Example">
+                        </li>
+                </ul>
+                <p class="demourl">
+                    <a href="https://hacks.mozilla.org/2014/09/phonegap-developer-app-preview-for-firefox-os/">https://hacks.mozilla.org/2014/09/phonegap-developer-app-preview-for-firefox-os/</a>
+                </p>
+                <footer class="notes">
+                    https://github.com/mozilla-cordova/cordovasample
+                </footer>
+            </section>
+            </div>
+        </div>
+        <div id="pluginsupport" class="slide h">
+            <div>
+                <section>
+                    <header>
+                        <h2>Cordova Sample App</h2>
+                    </header>
+                    <ul class="inner">
+                        <div style="list-style-type: none;">
+                            <li class="active">
+                                <img src="pictures/latest/cordova.png" class="middle" height="400" alt="Cordova Firefox OS Example">
+                            </li>
+                    </ul>
+                    <p class="demourl">
+                        <a href="https://github.com/mozilla-cordova/cordovasample">https://github.com/mozilla-cordova/cordovasample</a>
+                    </p>
+                    <footer class="notes">
+                        https://github.com/mozilla-cordova/cordovasample
+                    </footer>
+                </section>
+                </div>
+            </div>
+>
+            </div>
+            <div id="deviceorientationplugin" class="slide">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Device-Orientation Plugin</h2>
+                        </header>
+
+                        <img height="450px" src="pictures/plugins/deviceorientationplugin.png" alt="Device Orientation Plugin" class="phone-shots-far right shadow">
+                        <pre>
+        	Implements the following methods:
+    <li>navigator.compass.getCurrentHeading</li>
+    <li>navigator.compass.watchHeading</li>
+    <li>navigator.compass.clearWatch</li>
+<code>var options = {</code>
+<code>    frequency: 300</code>
+<code>};</code>
+<code>watchID = navigator.compass.</code>
+<code>watchHeading(onSuccess, onError, options);</code>
+<code>function onSuccess(heading) {</code>
+<code>    myHeading = </code>
+<code>    (heading.magneticHeading).toFixed(2);</code>
+<code>....</code>    	    
+      </pre>
+                        <footer class="notes">
+                            No support for filter option or trueheading
+                        </footer>
+                    </section>
+                </div>
+            </div>
+            <div id="geoplugin" class="slide">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Geolocation Plugin</h2>
+                        </header>
+                        <img height="450px" src="pictures/plugins/geoplugin.png" alt="Geo Plugin" class="phone-shots-far right shadow">
+
+                        <pre>
+        	This plugin provides location information
+<code>navigator.geolocation.</code>
+<code>getCurrentPosition(onSuccess, onError);</code>
+<code>var onSuccess = function (position) {</code>
+<code>	var geodata = [position.coords.latitude,</code> 
+<code>		position.coords.longitude, 2, 2];</code>
+<code>		...</code>
+<code>}</code>
+ 
+      </pre>
+                        <footer class="notes">
+
+                        </footer>
+                    </section>
+                </div>
+            </div>
+            <div id="cordovacommands" class="slide">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox OS App With Cordova</h2>
+                        </header>
+                        <pre>
+    <code>$ sudo npm install -g cordova</code>
+    <code>$ cordova create hello com.example.hello HelloWorld</code>
+    <code>$ cd hello</code>
+    <code>$ cordova platform add firefoxos</code> 
+    <code>$ cordova prepare firefoxos</code>
+    <code>//add device specific plugins</code>
+    <code>$ cordova plugin add org.apache.cordova.geolocation</code> 
+      </pre>
+                        <p class="demourl">
+                            <a href="https://hacks.mozilla.org/2014/02/building-cordova-apps-for-firefox-os/">Building Cordova apps for Firefox OS</a>
+                        </p>
+                        <footer class="notes">
+                            To retrieve the photo all you need is a simple event handler in which you get the image as a data blob and you can play with it in your app.
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- ===================================================================
+TOOLS 
+======================================================================== -->
+
+            <div id="zomgtools" class="slide shout">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Tools</h2>
+                        </header>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+            <div id="webide" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Web IDE</h2>
+                        </header>
+                        <img src="pictures/latest/webide.png" alt="App Manager" class="middle" height="500">
+                        <p class="demourl">
+                            <a href="https://developer.mozilla.org/en-US/docs/Tools/WebIDE" />Web IDE allows live editing/debugging of App!
+                            </a>
+                        </p>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+            <div id="monitoride" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Web IDE - Monitor</h2>
+                        </header>
+                        <img src="pictures/latest/monitor.png" alt="App Manager" class="middle" height="500">
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+            <div id="performanceide" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Devtools Performance Monitor</h2>
+                        </header>
+                        <img src="pictures/latest/newperformance.png" alt="Dev Tools Performance" class="middle" height="500">
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+            <div id="webaudio" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Devtools Web Audio Editor</h2>
+                        </header>
+                        <img src="pictures/latest/webaudio.png" alt="Dev Tools Web Audio Editor" class="middle" height="500">
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+            <div id="newfeaturescanvas" class="slide">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Devtools Canvas Debugger</h2>
+                        </header>
+                        <img src="pictures/latest/paddlecanvasdebugger.png" alt="Firefox OS Canvas Debugger" class="middle " height="500">
+                        </li>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+            <div id="newfeaturesshader" class="slide">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Devtools Shader Editor</h2>
+                        </header>
+                        <img src="pictures/latest/shadereditor.png" alt="Firefox OS Shader Editor" class="middle " height="500">
+                        </li>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+            <div id="newfeaturesnetwork" class="slide">
+                <div>
+                    <section>
+                        <header>
+                            <h2>Firefox Devtools Network Monitor</h2>
+                        </header>
+                        <img src="pictures/latest/network.png" alt="Firefox OS Network" class="middle shadow" height="475">
+                        </li>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="newfeaturesnetwork2" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Firefox Devtools Network Monitor</h2>
+                </header>
+                <img src="pictures/latest/network2.png" alt="Firefox OS Network" class="middle shadow" height="475">
+                </li>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+
+
+    <div id="newinspector" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Firefox Devtools Inspector</h2>
+                </header>
+                <img src="pictures/latest/pageinspector.png" alt="transform example" class="middle" height="475">
+                </li>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div id="storage" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Firefox Devtools Storage Inspector</h2>
+                </header>
+                <img src="pictures/latest/storage.png" alt="transform example" class="middle" height="475">
+                </li>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="toolsadapter" class="slide h">
+        <div>
+            <section>
+                <header>
+                    <h2>Valence</h2>
+                </header>
+                <img src="pictures/latest/toolsadapter.png" alt="App Manager" class="middle " height="500">
+                <p class="demourl">
+                    <a href="https://hacks.mozilla.org/2014/09/firefox-tools-adapter/" />Debug Other Browsers
+                    </a>
+                </p>
+                <footer class="notes">
+                    Inspector, Console and Style Editor currently works.
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="toolsadapter2" class="slide h">
+        <div>
+            <section>
+                <header>
+                    <h2>Valence Contd...</h2>
+                </header>
+                <ul>
+                    <li>Currently available in Firefox Developer
+                        <li>
+                            <li>Chrome On Android - Chrome 37 or higher </li>
+                            <li>Safari on iOS 7 and up - Mac and Linux</li>
+                            <li>Chrome on Desktop </li>
+                </ul>
+                <img src="pictures/latest/adapteraddon.png" alt="App Manager" class="center " height="300">
+
+                <footer class="notes">
+                    Inspector, Console and Style Editor currently works.
+                </footer>
+            </section>
+        </div>
+    </div>
+    <div id="toolsadapter3" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>iOS Safari Setup</h2>
+                </header>
+                <img src="pictures/latest/iosproxysetup.png" class="right" height="400" alt="iOS Proxy">
+
+                <ul>
+                    <li>Enable Web Inspector in Safari Advanced Settings</li>
+                    <li>Select Safari on iOS from WebIDE Connect Menu</li>
+                </ul>
+
+
+            </section>
+        </div>
+    </div>
+    <div id="toolsadapter4" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Chrome on Android Setup</h2>
+                </header>
+                <img src="pictures/latest/androidremote.png" class="right" height="400" alt="androidremote">
+
+                <ul>
+                    <li>Enable developer mode and USB Debugging</li>
+                    <li>Select Chrome on Android from WebIDE Connect Menu</li>
+                </ul>
+
+
+            </section>
+        </div>
+    </div>
+    <div id="toolsadapter5" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Chrome on port 9222</h2>
+                </header>
+                <img src="pictures/latest/chromedebug3.png" class="right" height="50" alt="iOS Proxy">
+                <img src="pictures/latest/chromedebug2.png" class="right" height="400" alt="iOS Proxy">
+
+                <ul>
+                    <li>Run Chrome with Remote Debugging Enabled</li>
+                    <li>open -a Google\ Chrome\ Canary --args --remote-debugging-port=9222 --disable-web-security</li>
+                    <li>Select Chrome Desktop from WebIDE Connect Menu</li>
+                </ul>
+
+
+            </section>
+        </div>
+    </div>
+    
+                <div id="nodefirefox" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>node-firefox</h2>
+                        </header>
+                        <img src="pictures/latest/nodefirefox.gif" alt="Node Firefox" class="middle" height="450">
+                        <p class="demourl">
+                            <a href="https://hacks.mozilla.org/2015/02/introducing-node-firefox/">Introducing node-firefox
+                            </a>
+                        </p>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+                        <div id="nodefirefox2" class="slide h">
+                <div>
+                    <section>
+                        <header>
+                            <h2>node-firefox</h2>
+                        </header>
+                        <img src="pictures/latest/nodemodules.png" alt="Node Firefox Modules" class="middle" height="450">
+                        <p class="demourl">
+                            <a href="https://github.com/mozilla/node-firefox">node-firefox Modules
+                            </a>
+                        </p>
+                        <footer class="notes">
+                        </footer>
+                    </section>
+                </div>
+            </div>
+
+    <!--        <div id="newfeatureshud" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Firefox OS Developer Hud</h2>
+                </header>
+                <img src="pictures/latest/hud.png" alt="Firefox OS Network" class="middle shadow" height="475">
+                </li>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div> -->
+
+
+    <!-- ===================================================================
+INFORMATION RESOURCES 
+======================================================================== -->
+
+
+    <div id="zomginfo" class="slide shout">
+        <div>
+            <section>
+                <header>
+                    <h2>More Information</h2>
+                </header>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <div id="hacksblog" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Hacks Blog</h2>
+                </header>
+                <img src="pictures/fxos/hacksblog.png" alt="Hacks Blog" class="middle shadow" height="400">
+                <p class="demourl">
+                    <a href="https://hacks.mozilla.org/">https://hacks.mozilla.org/</a>
+                </p>
+                <footer class="notes">
+                    The hacks blog has almost weekly new posts about how to create things for and with Firefox OS and up-to-date information on developer tools.
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+    <div id="fxoswiki" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>MDN</h2>
+                </header>
+                <img src="pictures/fxos/mdn.png" alt="Mozilla MDN" class="middle shadow" height="400">
+                <p class="demourl">
+                    <a href="https://developer.mozilla.org/">https://developer.mozilla.org/</a>
+                </p>
+                <footer class="notes">
+                </footer>
+            </section>
+        </div>
+    </div>
+
+
+
+
+    <!-- ===================================================================
+Done
+======================================================================== -->
+
+    <div id="thanks" class="slide">
+        <div>
+            <section>
+                <header>
+                    <h2>Thanks</h2>
+                </header>
+
+                <ul class="nobull">
+                    <li>Jason Weathersby</li>
+                    <li>Technical Evangelist</li>
+                    <li><a href="http://twitter.com/JasonWeathersby">Twitter @JasonWeathersby</a>
+                    </li>
+                </ul>
+
+
+                <footer class="notes">
+                </footer>
+
+            </section>
+        </div>
+    </div>
+
+    <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+    <div class="progress-off">
+        <div></div>
+    </div>
+    <script src="scripts/script.js"></script>
+    <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+
+</html>
